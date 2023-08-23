@@ -56,7 +56,7 @@
 
 - (void)setup {
     self.backgroundView = [[UIView alloc] initWithFrame:self.bounds];
-    self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.12f alpha:1.0f];
+    self.backgroundView.backgroundColor = [UIColor clearColor];
     [self addSubview:self.backgroundView];
     
     // On iOS 9, we can use the new layout features to determine whether we're in an 'Arabic' style language mode
@@ -87,7 +87,7 @@
     [_doneTextButton sizeToFit];
     [_doneTextButton setBackgroundColor: UIColor.blueColor];
     [_doneTextButton setImage: [UIImage systemImageNamed:@"checkmark"] forState:UIControlStateNormal];
-    [_doneIconButton setTintColor:UIColor.whiteColor];
+    [_doneTextButton setTintColor:UIColor.whiteColor];
     _doneTextButton.layer.cornerRadius = 4;
     [self addSubview:_doneTextButton];
     
