@@ -501,8 +501,6 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         self.toCropViewController = TOCropViewController(croppingStyle: croppingStyle, image: image)
         super.init(nibName: nil, bundle: nil)
         setUpCropController()
-        guard let myView = myView else {return}
-        view.addSubview(myView)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -516,6 +514,8 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         if toCropViewController.view.superview == nil {
             view.addSubview(toCropViewController.view)
         }
+        guard let myView = myView else {return}
+        view.addSubview(myView)
     }
     
     open override func viewDidLayoutSubviews() {
