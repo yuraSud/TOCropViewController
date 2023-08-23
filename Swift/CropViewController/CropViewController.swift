@@ -524,7 +524,7 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
            // toCropViewController.view.frame = CGRect(x: 0, y: 100, width: view.bounds.width, height: view.bounds.height - 100)
            // toCropViewController.viewDidLayoutSubviews()
             toCropViewController.view.frame = view.bounds
-            myView.frame = CGRect(x: 0, y: 20, width: view.bounds.width, height: 80)
+            myView.frame = CGRect(x: 0, y: 30, width: view.bounds.width, height: 80)
         } else {
             toCropViewController.view.frame = view.bounds
           //  toCropViewController.viewDidLayoutSubviews()
