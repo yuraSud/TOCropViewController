@@ -630,8 +630,8 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
 extension CropViewController {
     
     fileprivate func setUpCropController() {
-        view.backgroundColor = .white
-        toCropViewController.cropView.backgroundColor = .white
+        view.backgroundColor = .white.withAlphaComponent(0.6)
+//        toCropViewController.cropView.backgroundColor = .white
         modalPresentationStyle = .fullScreen
         addChild(toCropViewController)
         transitioningDelegate = (toCropViewController as! UIViewControllerTransitioningDelegate)
