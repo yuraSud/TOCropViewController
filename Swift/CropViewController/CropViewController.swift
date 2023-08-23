@@ -501,6 +501,8 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         self.toCropViewController = TOCropViewController(croppingStyle: croppingStyle, image: image)
         super.init(nibName: nil, bundle: nil)
         setUpCropController()
+        guard let myView = myView else {return}
+        view.addSubview(myView)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -512,9 +514,7 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         
         // Defer adding the view until we're about to be presented
         if toCropViewController.view.superview == nil {
-            view.addSubview(toCropViewController.cropView)
-            guard let myView = myView else {return}
-            view.addSubview(myView)
+            view.addSubview(toCropViewController.view)
         }
     }
     
