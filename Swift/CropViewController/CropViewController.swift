@@ -512,9 +512,9 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         
         // Defer adding the view until we're about to be presented
         if toCropViewController.view.superview == nil {
-            view.addSubview(toCropViewController.view)
+            view.addSubview(toCropViewController.cropView)
             guard let myView = myView else {return}
-            toCropViewController.cropView.addSubview(myView)
+            view.addSubview(myView)
         }
     }
     
