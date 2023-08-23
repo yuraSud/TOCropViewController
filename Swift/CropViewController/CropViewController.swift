@@ -474,6 +474,8 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         return UIRectEdge.all
     }
     
+    open var myView: UIView?
+    
     // ------------------------------------------------
     /// @name Object Creation
     // ------------------------------------------------
@@ -509,15 +511,17 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         super.viewWillAppear(animated)
         
         // Defer adding the view until we're about to be presented
-        if toCropViewController.view.superview == nil {
+        if toCropViewController.view.superview == nil, let myView = myView {
             view.addSubview(toCropViewController.view)
+            view.addSubview(myView)
         }
     }
     
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        toCropViewController.view.frame = view.bounds
+        toCropViewController.view.frame = CGRect(x: 0, y: 100, width: view.bounds.width, height: view.bounds.height - 100)
         toCropViewController.viewDidLayoutSubviews()
+        myView?.frame = CGRect(x: 0, y: 20, width: view.bounds.width, height: 80)
     }
 
     /**
@@ -624,7 +628,10 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
 }
 
 extension CropViewController {
+    
     fileprivate func setUpCropController() {
+        view.backgroundColor = .white
+        toCropViewController.cropView.backgroundColor = .white
         modalPresentationStyle = .fullScreen
         addChild(toCropViewController)
         transitioningDelegate = (toCropViewController as! UIViewControllerTransitioningDelegate)

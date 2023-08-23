@@ -85,6 +85,9 @@
     }
     [_doneTextButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [_doneTextButton sizeToFit];
+    [_doneTextButton setBackgroundColor: UIColor.blueColor];
+    [_doneTextButton setImage: [UIImage systemImageNamed:@"checkmark"] forState:UIControlStateNormal];
+    _doneTextButton.layer.cornerRadius = 4;
     [self addSubview:_doneTextButton];
     
     _doneIconButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -107,6 +110,10 @@
     [_cancelTextButton.titleLabel setFont:[UIFont systemFontOfSize:17.0f]];
     [_cancelTextButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [_cancelTextButton sizeToFit];
+    [_cancelTextButton setBackgroundColor: UIColor.whiteColor];
+    _cancelTextButton.layer.borderWidth = 2.0;
+    _cancelTextButton.layer.borderColor = [UIColor blueColor].CGColor;
+    _cancelTextButton.layer.cornerRadius = 4;
     [self addSubview:_cancelTextButton];
     
     _cancelIconButton = [UIButton buttonWithType:UIButtonTypeSystem];
