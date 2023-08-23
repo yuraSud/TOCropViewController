@@ -511,17 +511,23 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         super.viewWillAppear(animated)
         
         // Defer adding the view until we're about to be presented
-        if toCropViewController.view.superview == nil, let myView = myView {
+        if toCropViewController.view.superview == nil {
             view.addSubview(toCropViewController.view)
-            toCropViewController.view.addSubview(myView)
+            guard let myView = myView else {return}
+            view.addSubview(myView)
         }
     }
     
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        toCropViewController.view.frame = CGRect(x: 0, y: 100, width: view.bounds.width, height: view.bounds.height - 100)
-        toCropViewController.viewDidLayoutSubviews()
-        myView?.frame = CGRect(x: 0, y: 20, width: view.bounds.width, height: 80)
+        if let myView = myView {
+            toCropViewController.view.frame = CGRect(x: 0, y: 100, width: view.bounds.width, height: view.bounds.height - 100)
+            toCropViewController.viewDidLayoutSubviews()
+            myView.frame = CGRect(x: 0, y: 20, width: view.bounds.width, height: 80)
+        } else {
+            toCropViewController.view.frame = view.bounds
+            toCropViewController.viewDidLayoutSubviews()
+        }
     }
 
     /**
