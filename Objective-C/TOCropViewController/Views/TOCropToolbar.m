@@ -87,6 +87,7 @@
     [_doneTextButton sizeToFit];
     [_doneTextButton setBackgroundColor: UIColor.blueColor];
     [_doneTextButton setImage: [UIImage systemImageNamed:@"checkmark"] forState:UIControlStateNormal];
+    [_doneIconButton setTintColor:UIColor.whiteColor];
     _doneTextButton.layer.cornerRadius = 4;
     [self addSubview:_doneTextButton];
     
@@ -192,7 +193,7 @@
         // Work out the cancel button frame
         CGRect frame = CGRectZero;
         frame.size.height = 44.0f;
-        frame.size.width = _showOnlyIcons ? 44.0f : MIN(self.frame.size.width / 3.0, self.cancelTextButton.frame.size.width);
+        frame.size.width = self.frame.size.width / 3.0;//_showOnlyIcons ? 44.0f : MIN(self.frame.size.width / 3.0, self.cancelTextButton.frame.size.width);
 
         //If normal layout, place on the left side, else place on the right
         if (self.reverseContentLayout == NO) {
@@ -204,7 +205,7 @@
         (_showOnlyIcons ? self.cancelIconButton : self.cancelTextButton).frame = frame;
         
         // Work out the Done button frame
-        frame.size.width = _showOnlyIcons ? 44.0f : MIN(self.frame.size.width / 3.0, self.doneTextButton.frame.size.width);
+        frame.size.width = self.frame.size.width / 3.0;//_showOnlyIcons ? 44.0f : MIN(self.frame.size.width / 3.0, self.doneTextButton.frame.size.width);
         
         if (self.reverseContentLayout == NO) {
             frame.origin.x = boundsSize.width - (frame.size.width + insetPadding);
@@ -231,7 +232,7 @@
         containerView.frame = containerRect;
 #endif
         
-        CGSize buttonSize = (CGSize){44.0f,44.0f};
+        CGSize buttonSize = (CGSize){44.0f,144.0f};
         
         NSMutableArray *buttonsInOrderHorizontally = [NSMutableArray new];
         if (!self.rotateCounterclockwiseButtonHidden) {
@@ -254,12 +255,12 @@
     else {
         CGRect frame = CGRectZero;
         frame.size.height = 44.0f;
-        frame.size.width = 44.0f;
+        frame.size.width = 144.0f;
         frame.origin.y = CGRectGetHeight(self.bounds) - 44.0f;
         self.cancelIconButton.frame = frame;
         
         frame.origin.y = self.statusBarHeightInset;
-        frame.size.width = 44.0f;
+        frame.size.width = 144.0f;
         frame.size.height = 44.0f;
         self.doneIconButton.frame = frame;
         
@@ -269,7 +270,7 @@
         containerView.frame = containerRect;
 #endif
         
-        CGSize buttonSize = (CGSize){44.0f,44.0f};
+        CGSize buttonSize = (CGSize){44.0f,144.0f};
         
         NSMutableArray *buttonsInOrderVertically = [NSMutableArray new];
         if (!self.rotateCounterclockwiseButtonHidden) {
